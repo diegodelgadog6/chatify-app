@@ -12,19 +12,19 @@ const MyForm = () => {
         setMessage(e.target.value)
     }
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault()
         socket.emit('chat message', message)
-        setMessage('')
     }
 
     return (
         <div className="my-form">
             
             <input 
-            type="text" 
-            placeholder='Escribe tu mensaje...'
-            value={message}
-            onChange={handleOnChange}
+                type="text" 
+                placeholder='Escribe tu mensaje...'
+                value={message}
+                onChange={handleOnChange}
             />
             
             <button className="emoji-btn" title="Emojis">😊</button>

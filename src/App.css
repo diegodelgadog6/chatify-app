@@ -112,6 +112,35 @@
   background-color: #677bc4;
 }
 
+.chats-container {
+  flex: 1;
+  background-color: #2f3136;
+  border: 1px solid #202225;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  overflow-y: auto;
+}
+
+.chats-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.chat-item {
+  background-color: #40444b;
+  border-radius: 4px;
+  padding: 8px 10px;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.chats-empty {
+  color: #b9bbbe;
+  margin: 0;
+}
+
 .my-form {
   margin-top: auto;
   display: flex;

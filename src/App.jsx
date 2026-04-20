@@ -7,6 +7,7 @@ import ManageConnection from './components/ManageConnection';
 import MyForm from './components/MyForm';
 import Channels from './components/Channels';
 import Users from './components/Users';
+import Chats from './components/Chats';
 
 function App() {
 
@@ -15,7 +16,13 @@ function App() {
     const onConnect = () => {
       console.log('Conectado');
     }
+
     socket.on('connect', onConnect);
+
+    return () => {
+      socket.off('disconnect');
+      socket.off('connect', onConnect);
+    }
 
   }, [])
 
@@ -32,6 +39,7 @@ function App() {
 
         <div className="chat-panel">
           <ManageConnection />
+          <Chats />
           <MyForm />
         </div>
 

@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { socket } from '../../socket';
 
 const Channels = () => {
-  const [channels] = useState([
+  const channels = [
     'general',
     'random',
     'tech',
     'gaming',
     'music'
-  ]);
+  ];
+
   const [selectedChannel, setSelectedChannel] = useState('general');
 
   const handleChannelClick = (channel) => {
@@ -21,12 +22,10 @@ const Channels = () => {
       <h3>Canales</h3>
       <ul>
         {channels.map((channel) => (
-          <li 
-            key={channel} 
+          <li
+            key={channel}
             onClick={() => handleChannelClick(channel)}
-            style={{
-              backgroundColor: selectedChannel === channel ? '#7289da' : 'transparent'
-            }}
+            style={{ backgroundColor: selectedChannel === channel ? '#7289da' : 'transparent' }}
           >
             #{channel}
           </li>
