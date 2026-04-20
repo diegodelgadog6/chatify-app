@@ -4,23 +4,15 @@ import React from 'react';
 import { socket } from '../../socket'
 
 const ManageConnection = () => {
-
-    const onConnect = () => {
-        console.log('Conectado');
-    }
-
-    const onDisconnect = () => {
-        console.log('Desconectado');
-    }
-
+    
     const handleConnection = (con) => {
         console.log(con);
         switch (con) {
             case 'on':
-                socket.on('connect', onConnect)
+                socket.connect();
                 break;
             case 'off':
-                socket.on('connect', onDisconnect)
+                socket.disconnect();
                 break;
             default:
                 break;
