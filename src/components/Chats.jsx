@@ -21,12 +21,17 @@ const Chats = () => {
 
 
   return (
-    <>
-        <strong>Chat</strong>
-        {messages?.map((m) => (
-            <p>{m}</p>
-        ))}
-    </>
+    <div className="chats-container">
+        <ul className="chats-list">
+            {messages?.length > 0 ? (
+                messages.map((m, index) => (
+                    <li key={`${m}-${index}`} className="chat-item">{m}</li>
+                ))
+            ) : (
+                <p className="chats-empty">Todavia no hay mensajes en este canal.</p>
+            )}
+        </ul>
+    </div>
   )
 }
 
