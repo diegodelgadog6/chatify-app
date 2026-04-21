@@ -292,35 +292,54 @@ li:focus-visible {
   .app-content {
     flex-direction: column;
     overflow-y: auto;
-    gap: 0;
-    padding: 0;
+    gap: var(--space-sm);
+    padding: var(--space-sm);
+  }
+
+  .channels-panel,
+  .users-panel,
+  .chat-panel {
+    width: 100%;
+    border-radius: var(--radius-md);
   }
 
   .channels-panel,
   .users-panel {
-    display: none;
+    max-height: 150px;
+    overflow-y: auto;
   }
 
   .chat-panel {
-    width: 100%;
-    height: 100%;
-    border: none;
-    border-radius: 0;
-    padding: var(--space-sm);
+    min-height: 280px;
+    max-height: 400px;
   }
 
   .chats-container {
     margin-bottom: var(--space-sm);
+    max-height: 280px;
   }
 
+  .my-form {
+    gap: 6px;
+  }
+
+  .emoji-btn,
   .my-form input,
-  .my-form button {
-    font-size: 12px;
+  .my-form button:not(.emoji-btn) {
     height: 38px;
+    font-size: 13px;
   }
 
   .emoji-btn {
     width: 38px;
-    height: 38px;
+  }
+
+  .app-header {
+    height: 56px;
+    padding: 0 var(--space-md);
+  }
+
+  .app-header h1 {
+    font-size: 18px;
   }
 }
