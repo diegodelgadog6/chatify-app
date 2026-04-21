@@ -188,14 +188,6 @@
   word-break: break-word;
 }
 
-.chat-item:nth-child(even) {
-  align-self: flex-end;
-  background: linear-gradient(135deg, var(--primary), var(--primary-strong));
-  border-color: rgba(129, 140, 248, 0.8);
-  border-radius: 12px 12px 4px 12px;
-  color: #ffffff;
-}
-
 .chats-empty {
   color: var(--text-muted);
   margin: 0;
