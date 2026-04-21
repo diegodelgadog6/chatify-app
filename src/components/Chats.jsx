@@ -22,15 +22,15 @@ const Chats = () => {
 
   return (
     <div className="chats-container">
-        <ul className="chats-list">
+        <div className="chats-list">
             {messages?.length > 0 ? (
                 messages.map((m, index) => (
-                    <li key={`${m}-${index}`} className="chat-item">{m}</li>
+                    <div key={index} className="chat-item">{m}</div>
                 ))
             ) : (
                 <p className="chats-empty">Todavia no hay mensajes en este canal.</p>
             )}
-        </ul>
+        </div>
     </div>
   )
 }
