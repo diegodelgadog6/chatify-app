@@ -292,21 +292,35 @@ li:focus-visible {
   .app-content {
     flex-direction: column;
     overflow-y: auto;
-  }
-
-  .channels-panel,
-  .users-panel,
-  .chat-panel {
-    width: 100%;
-    max-height: none;
+    gap: 0;
+    padding: 0;
   }
 
   .channels-panel,
   .users-panel {
-    overflow-y: visible;
+    display: none;
   }
 
   .chat-panel {
-    min-height: 320px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    border-radius: 0;
+    padding: var(--space-sm);
+  }
+
+  .chats-container {
+    margin-bottom: var(--space-sm);
+  }
+
+  .my-form input,
+  .my-form button {
+    font-size: 12px;
+    height: 38px;
+  }
+
+  .emoji-btn {
+    width: 38px;
+    height: 38px;
   }
 }
