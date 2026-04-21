@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { socket } from '../../socket'
+import { socket } from '../socket'
 
 const ManageConnection = () => {
     
