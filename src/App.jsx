@@ -1,6 +1,6 @@
 
 
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import { socket } from './socket'
 import ManageConnection from './components/ManageConnection';
@@ -10,6 +10,8 @@ import Users from './components/Users';
 import Chats from './components/Chats';
 
 function App() {
+
+  const [selectedChannel, setSelectedChannel] = useState('general');
 
   useEffect(() => {
     
@@ -34,13 +36,13 @@ function App() {
       
       <div className="app-content">
         <div className="channels-panel">
-          <Channels />
+          <Channels selectedChannel={selectedChannel} setSelectedChannel={setSelectedChannel}/>
         </div>
 
         <div className="chat-panel">
           <ManageConnection />
-          <Chats />
-          <MyForm />
+          <Chats selectedChannel={selectedChannel}/>
+          <MyForm selectedChannel= {selectedChannel}/>
         </div>
 
         <div className="users-panel">
