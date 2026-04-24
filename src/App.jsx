@@ -14,47 +14,11 @@ const STORAGE_KEY = 'chatify_usernames_by_room'
 const DEFAULT_ROOM = 'general'
 const ROOMS = ['general', 'random', 'tech talk', 'gaming']
 
-const readStoredUsernames = () => {
-  if (typeof window === 'undefined') {
-    return {}
-  }
-
-  try {
-    const storedValue = window.localStorage.getItem(STORAGE_KEY)
-
-    if (!storedValue) {
-      return {}
-    }
-
-    const parsedValue = JSON.parse(storedValue)
-
-    if (!parsedValue || typeof parsedValue !== 'object') {
-      return {}
-    }
-
-    return Object.entries(parsedValue).reduce((accumulator, [room, username]) => {
-      const normalizedUsername = typeof username === 'string' ? username.trim() : ''
-
-      if (normalizedUsername) {
-        accumulator[room] = normalizedUsername
-      }
-
-      return accumulator
-    }, {})
-  } catch {
-    return {}
-  }
-}
-
 function App() {
   const [selectedChannel, setSelectedChannel] = useState(DEFAULT_ROOM)
-  const [usernamesByRoom, setUsernamesByRoom] = useState(() => readStoredUsernames())
-  const [currentUsername, setCurrentUsername] = useState(() => readStoredUsernames()[DEFAULT_ROOM]?.trim() || '')
-  const [pendingRoom, setPendingRoom] = useState(() => {
-    const storedUsernames = readStoredUsernames()
-
-    return storedUsernames[DEFAULT_ROOM]?.trim() ? null : DEFAULT_ROOM
-  })
+  const [usernamesByRoom, setUsernamesByRoom] = useState({})
+  const [currentUsername, setCurrentUsername] = useState('')
+  const [pendingRoom, setPendingRoom] = useState(DEFAULT_ROOM)
   const joinedRoomRef = useRef(null)
 
   const roomUsername = (usernamesByRoom[selectedChannel] ?? '').trim()
