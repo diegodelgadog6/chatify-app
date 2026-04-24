@@ -12,9 +12,13 @@ const Channels = () => {
 
   const [selectedChannel, setSelectedChannel] = useState('general');
 
+  // changed the function to handle teh chanel switching : leaves the current room and joins the new one 
   const handleChannelClick = (channel) => {
+    if (selectedChannel !== channel) {
+      socket.emit('leave room', {room: selectedChannel});
+  }
     setSelectedChannel(channel);
-    socket.emit('join channel', channel);
+    socket.emit('join room', { username: 'test user', room: channel });
   };
 
   return (

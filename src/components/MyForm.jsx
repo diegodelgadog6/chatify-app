@@ -12,9 +12,12 @@ const MyForm = () => {
         setMessage(e.target.value)
     }
 
+    // ticket 1 
+    // sends message with the username and the room to the server now
     const handleClick = (e) => {
         e.preventDefault()
-        socket.emit('chat message', message)
+        socket.emit('chat message', {content: message, username: 'test user', room: 'general'});
+        setMessage(''); // clearing the input after the message is sent 
     }
 
     return (
