@@ -1,20 +1,22 @@
-import React, { useState } from 'react';
+
+
 import { socket } from '../socket';
 
-const Channels = () => {
+const Channels = ({ selectedChannel, setSelectedChannel}) => { // receives the current channel and the function to change it from App.jsx ;removed music as a chanel
   const channels = [
     'general',
     'random',
-    'tech',
-    'gaming',
-    'music'
+    'tech talk',
+    'gaming'
   ];
 
-  const [selectedChannel, setSelectedChannel] = useState('general');
-
+  // changed the function to handle teh chanel switching : leaves the current room and joins the new one 
   const handleChannelClick = (channel) => {
+    if (selectedChannel !== channel) {
+      socket.emit('leave room', {room: selectedChannel});
+  }
     setSelectedChannel(channel);
-    socket.emit('join channel', channel);
+    socket.emit('join room', { username: 'test user', room: channel });
   };
 
   return (
