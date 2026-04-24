@@ -1,6 +1,5 @@
 
 
-import React from 'react';
 import { socket } from '../socket'
 
 const ManageConnection = () => {
@@ -17,11 +16,6 @@ const ManageConnection = () => {
             default:
                 break;
         }
-    }
-
-    const handleDisconnect = () => {
-        socket.off('connect', onConnect)
-        socket.off('connect', onDisconnect)
     }
 
   return (

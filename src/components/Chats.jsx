@@ -1,16 +1,10 @@
 
-
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { socket } from '../socket'
 
-const Chats = ({selectedChannel}) => {
+const Chats = () => {
 
    const [messages, setMessage] = useState([]);
-
-    // clears the messages wehn swithcing to different rooms
-   useEffect(() => {
-    setMessage([]); 
-    }, [selectedChannel]);
 
    // ticket 1 
    useEffect(() => {

@@ -1,18 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import { useState } from 'react'
 
 const Users = () => {
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    const randomUsers = [
-      { id: 1, name: 'Diego' },
-      { id: 2, name: 'Carlos' },
-      { id: 3, name: 'María' },
-      { id: 4, name: 'Juan' },
-      { id: 5, name: 'Andrea' }
-    ];
-    setUsers(randomUsers);
-  }, []);
+  const [users] = useState([
+    { id: 1, name: 'Diego' },
+    { id: 2, name: 'Carlos' },
+    { id: 3, name: 'María' },
+    { id: 4, name: 'Juan' },
+    { id: 5, name: 'Andrea' },
+  ])
 
   return (
     <div>
