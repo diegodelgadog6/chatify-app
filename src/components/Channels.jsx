@@ -6,7 +6,7 @@ const Channels = ({ selectedChannel, setSelectedChannel}) => { // receives the c
   const channels = [
     'general',
     'random',
-    'tech',
+    'tech talk',
     'gaming'
   ];
 
