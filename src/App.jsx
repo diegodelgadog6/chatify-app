@@ -131,7 +131,10 @@ function App() {
         </div>
 
         <div className="users-panel">
-          <Users />
+          <Users
+            usuarioActual={roomUsername}
+            roomActual={selectedChannel}
+          />
         </div>
       </div>
 

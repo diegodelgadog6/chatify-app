@@ -295,6 +295,50 @@ li:focus-visible {
   backdrop-filter: blur(18px);
 }
 
+/* Users.jsx styling - TICKET-3 */
+.user-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.user-initial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.user-item-current .user-initial {
+  border-color: var(--online);
+  color: var(--online);
+}
+
+.user-name {
+  flex: 1;
+}
+
+.user-item-current {
+  color: var(--online);
+  font-weight: 600;
+}
+
+.user-online-badge {
+  font-size: 11px;
+  color: var(--online);
+  font-weight: 600;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
 .username-prompt {
   width: min(100%, 480px);
   display: flex;
