@@ -1,27 +1,14 @@
-import React, { useState } from 'react';
-import { socket } from '../socket';
 
-const Channels = () => {
-  const channels = [
-    'general',
-    'random',
-    'tech',
-    'gaming',
-    'music'
-  ];
-
-  const [selectedChannel, setSelectedChannel] = useState('general');
-
+const Channels = ({ selectedChannel, rooms, onRequestRoomChange }) => {
   const handleChannelClick = (channel) => {
-    setSelectedChannel(channel);
-    socket.emit('join channel', channel);
-  };
+    onRequestRoomChange(channel)
+  }
 
   return (
     <div>
       <h3>Canales</h3>
       <ul>
-        {channels.map((channel) => (
+        {rooms.map((channel) => (
           <li
             key={channel}
             onClick={() => handleChannelClick(channel)}
