@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react'
 import { socket } from '../socket'
 
-const Chats = ({ selectedChannel, myUsername }) => {
+const Chats = ({ myUsername, typingUsers }) => {
 
    const [messages, setMessage] = useState([]);
 
@@ -71,7 +71,13 @@ const Chats = ({ selectedChannel, myUsername }) => {
             ) : (
                 <p className="chats-empty">Todavia no hay mensajes en este canal.</p>
             )}
-        </div>
+            {typingUsers && typingUsers.size > 0 && (
+                <div className="typing-indicator">
+                    <p className="typing-text">
+                        {Array.from(typingUsers).join(', ')} {typingUsers.size === 1 ? 'está' : 'están'} escribiendo...
+                    </p>
+                </div>
+            )}        </div>
     </div>
   )
 }
