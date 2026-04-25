@@ -20,7 +20,10 @@ const MyForm = ({ selectedChannel, username, isRoomReady }) => {
             return
         }
 
-        socket.emit('chat message', { content: trimmedMessage, username, room: selectedChannel });
+        socket.emit('chat message', { 
+            content: trimmedMessage, 
+            username, 
+            room: selectedChannel });
         setMessage('');
     }
 
