@@ -201,6 +201,32 @@
   font-style: italic;
 }
 
+.typing-indicator {
+  margin-top: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(99, 102, 241, 0.12);
+  border-left: 3px solid rgba(99, 102, 241, 0.5);
+  border-radius: var(--radius-sm);
+  animation: pulse-typing 1.5s ease-in-out infinite;
+}
+
+.typing-text {
+  margin: 0;
+  color: rgba(165, 180, 252, 0.8);
+  font-size: 12px;
+  font-style: italic;
+  letter-spacing: 0.01em;
+}
+
+@keyframes pulse-typing {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
 .my-form {
   margin-top: auto;
   display: flex;

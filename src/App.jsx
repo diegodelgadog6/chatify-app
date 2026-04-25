@@ -19,6 +19,7 @@ function App() {
   const [usernamesByRoom, setUsernamesByRoom] = useState({})
   const [currentUsername, setCurrentUsername] = useState('')
   const [pendingRoom, setPendingRoom] = useState(DEFAULT_ROOM)
+  const [typingUsers, setTypingUsers] = useState(new Set())
   const joinedRoomRef = useRef(null)
 
   const roomUsername = (usernamesByRoom[selectedChannel] ?? '').trim()
@@ -36,6 +37,38 @@ function App() {
     }
 
   }, [])
+
+  useEffect(() => {
+    const onUserTyping = ({ username, room }) => {
+      if (room === selectedChannel && username !== roomUsername) {
+        setTypingUsers((prev) => new Set([...prev, username]))
+      }
+    }
+
+    const onStopTyping = ({ username, room }) => {
+      if (room === selectedChannel) {
+        setTypingUsers((prev) => {
+          const next = new Set(prev)
+          next.delete(username)
+          return next
+        })
+      }
+    }
+
+    socket.on('user typing', onUserTyping)
+    socket.on('stop typing', onStopTyping)
+
+    return () => {
+      socket.off('user typing', onUserTyping)
+      socket.off('stop typing', onStopTyping)
+    }
+  }, [selectedChannel, roomUsername])
+
+  useEffect(() => {
+    return () => {
+      setTypingUsers(new Set())
+    }
+  }, [selectedChannel])
 
   useEffect(() => {
     try {
@@ -123,9 +156,10 @@ function App() {
               : `Configura tu username para entrar a #${selectedChannel}`}
           </p>
           <Chats key={selectedChannel} 
-          selectedChannel={selectedChannel} 
           //added on ticket 4 to divide between own messages and others
-          myUsername={roomUsername}/>
+          myUsername={roomUsername}
+          typingUsers={typingUsers}
+          />
           <MyForm
             selectedChannel={selectedChannel}
             username={roomUsername}

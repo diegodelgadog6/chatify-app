@@ -5,9 +5,6 @@ const Users = ({ usuarioActual, roomActual }) => {
   const [users, setUsers] = useState([])
 
   useEffect(() => {
-    // Limpiar lista anterior para evitar flicker
-    setUsers([])
-
     // Handler para 'room users' - reemplaza lista completa
     const handleRoomUsers = (data) => {
       const { users: usersList } = data
