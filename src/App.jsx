@@ -122,7 +122,10 @@ function App() {
               ? `Conectado como ${currentUsername || roomUsername} en #${selectedChannel}`
               : `Configura tu username para entrar a #${selectedChannel}`}
           </p>
-          <Chats key={selectedChannel} selectedChannel={selectedChannel} />
+          <Chats key={selectedChannel} 
+          selectedChannel={selectedChannel} 
+          //added on ticket 4 to divide between own messages and others
+          myUsername={roomUsername}/>
           <MyForm
             selectedChannel={selectedChannel}
             username={roomUsername}
